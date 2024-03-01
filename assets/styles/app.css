@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 
+/* RESET */
+
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+/* Initialisation des assets au niveau global */ 
+
 body {
-    background-color: skyblue;
+    background-color: #F3F3F7;
+}
+
+.btn 
+{
+    background-color: #609A7D;
 }
