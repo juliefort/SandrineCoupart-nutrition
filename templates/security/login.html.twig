@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace personnel{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="mb-3 flex justify-end my-3 mx-3">
+            <a href="{{ path('app_logout') }}" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se déconnecter</a>
+        </div>                   
+    {% endif %}
+
+    <div class="flex justify-center">
+        <div class="w-full max-w-xl items-center">
+            <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                
+                <h1 class="mb-3 text-center font-bold">Espace personnel</h1>
+
+                <div class="mb-4">
+                    <label for="inputEmail" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="exemple@free.fr" required autofocus>
+                </div>
+
+                <div class="mb-4">
+                    <label for="inputPassword" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                </div>
+
+                <div class="mb-4">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <div class="flex items-center justify-between">
+                    <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Se connecter
+                    </button>
+                    <div class="flex items-center g-2">
+                        <input id="checkbox" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded">
+                        <label for="checkbox" class="ms-2 text-sm">Se souvenir de moi</label>
+                    </div>
+                </div>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+    
+            </form>
+        </div>
+    </div>
+{% endblock %}
