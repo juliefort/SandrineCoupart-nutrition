@@ -10,7 +10,7 @@
         </div>                   
     {% endif %}
 
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center">
         <div class="w-full max-w-xl items-center">
             <form method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 
@@ -29,10 +29,6 @@
                 <div class="mb-4">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 </div>
-
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
 
                 <div class="flex items-center justify-between">
                     <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
