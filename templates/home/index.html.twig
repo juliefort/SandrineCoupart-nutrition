@@ -3,7 +3,63 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<h1 class="text-1xl font-bold underline">
-    Hello world!
-  </h1>
+
+  <main>
+    <section>
+      <div class="my-5 mx-5 flex gap-3 items-center" style="margin-top: 5rem; margin-bottom:5rem">
+        <div class="aboutUs px-3">
+          <h1 class="text-lg"> Sandrine Coupart </h1>
+          <h1 class="text-lg"> Nutritionniste - Diététicienne</h1>
+          <p class="text-sm"> Nutrionniste et Diététicienne diplômée depuis 2015, 
+              je vous propose mes services de consultation sur Caen
+              afin de vous aider à reprendre en main votre alimentation.
+              Je vous partage ainsi des recettes saines et équilibrées,
+              qui vous permettront d'allier santé et plaisir ! 
+
+          </p>
+        </div>
+
+        <div class="px-3">
+          <div class="presentation">
+            <img src="/image/aboutUs/nutritionniste.jpg"  class="rounded photo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2 class="text-xl text-center pt-6">Mes services</h2>
+      <div class="servicesCard">
+        <div class="my-5 py-5 flex justify-center">
+          <div class="containers text-center">
+            <img src="/image/services/consultation.jpg">
+            <h3 class="pt-6">Consultation</h3>
+            <p class="mx-5 py-3 mb-3">Je vous reçois au sein de mon cabinet du lundi au vendredi, 
+              et vous propose des consultations adaptées à vos besoins.
+            </p>
+          </div>
+        </div>
+
+        <div class="my-5 py-5 flex justify-center">
+          <div class="containers text-center">
+            <img src="/image/services/atelier.jpg">
+            <h3 class="pt-6">Ateliers</h3>
+            <p class="mx-5 py-3 mb-3">Je vous reçois au sein de mon cabinet du lundi au vendredi, 
+              et vous propose des consultations adaptées à vos besoins.
+            </p>
+          </div>
+        </div>
+
+        <div class="my-5 py-5 flex justify-center">
+          <div class="containers text-center">
+            <img src="/image/services/recettes.jpg">
+            <h3 class="pt-6">Recettes</h3>
+            <p class="mx-5 py-3 mb-3">Je vous reçois au sein de mon cabinet du lundi au vendredi, 
+              et vous propose des consultations adaptées à vos besoins.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock %}

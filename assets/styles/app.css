@@ -40,6 +40,57 @@ h1 {
     font-family: "Noto Sans", sans-serif;
 }
 
+/* Section AboutUs */ 
+.aboutUs > p, .aboutUs > h1
+{
+     width: calc(80% - 10px); 
+}
+
+.presentation 
+{
+    width: 20rem;
+    height: 12rem; 
+    border-radius: 0.2rem;
+}
+
+/* Services */
+
+.services 
+{
+    background-color: #BDB9B3;
+}
+
+.services > h2
+{
+    font-size: 2.25rem;
+}
+
+.services > h2,
+.containers > h3 
+{
+    font-family: "Baloo Bhaina 2", sans-serif;
+}
+
+.containers 
+{
+    width: 65%;
+    background-color: #DC9A7D;
+    border-radius: 0.2rem;
+}
+
+.containers > img
+{
+    max-height: 150px;
+    width: 100%;
+    border-radius: 0.2rem;
+    object-fit: cover;
+}
+
+.containers > h3 
+{
+    font-size: 1.3rem; 
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 1024px) {
@@ -55,3 +106,56 @@ h1 {
        letter-spacing: 0.1rem;
     }
 }
+
+@media screen and (min-width: 1280px) {
+
+    .aboutUs > p, .aboutUs > h1
+    {
+      width: calc(80% - 100px); 
+      line-height: 1.8rem; 
+    }
+
+    .aboutUs > h1
+    {
+        font-size: 2.25rem;
+    }
+
+    .aboutUs > p 
+    {
+        font-size: 1.125rem;
+    }
+
+    .presentation
+    {
+        width: 40rem;
+        height: 20rem; 
+        background-color: #BDB9B3;
+    }
+
+    .photo 
+    {
+        width:20rem; 
+        height:20rem; 
+        object-fit:cover;
+    }
+
+    .servicesCard
+    {
+        display: flex;
+        flex:wrap;
+        gap: 3rem;
+        justify-content: center;
+    }
+
+    .containers > img
+    {
+        width: 35rem;
+        height: 15rem; 
+    }
+
+    .containers
+    {   
+        width: 25rem;
+    }
+
+    }
