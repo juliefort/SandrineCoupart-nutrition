@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,6 +37,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 100)]
     private ?string $firstName = null;
+
+    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'users', cascade: ['persist', 'remove'])]
+    private Collection $allergens;
+
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'users', cascade: ['persist', 'remove'])]
+    private Collection $diet;
+
+    public function __construct()
+    {
+        $this->allergens = new ArrayCollection();
+        $this->diet = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,6 +145,54 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Allergens>
+     */
+    public function getAllergens(): Collection
+    {
+        return $this->allergens;
+    }
+
+    public function addAllergen(Allergens $allergen): static
+    {
+        if (!$this->allergens->contains($allergen)) {
+            $this->allergens->add($allergen);
+        }
+
+        return $this;
+    }
+
+    public function removeAllergen(Allergens $allergen): static
+    {
+        $this->allergens->removeElement($allergen);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Diet>
+     */
+    public function getDiet(): Collection
+    {
+        return $this->diet;
+    }
+
+    public function addDiet(Diet $diet): static
+    {
+        if (!$this->diet->contains($diet)) {
+            $this->diet->add($diet);
+        }
+
+        return $this;
+    }
+
+    public function removeDiet(Diet $diet): static
+    {
+        $this->diet->removeElement($diet);
 
         return $this;
     }
