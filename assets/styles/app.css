@@ -96,6 +96,19 @@ h1 {
     font-size: 1.3rem; 
 }
 
+/* Formulaire d'inscription de patients */
+
+.formInputs
+{
+    gap: 3rem;
+}
+
+.form 
+{
+    width: 55rem;
+    background-color: #BDB9B3;
+    border-radius: 0.2rem;
+}
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 1024px) {

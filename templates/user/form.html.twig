@@ -1,59 +1,88 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form 'tailwind_2_layout.html.twig' %}
+
 {% block title %} Espace administratif {% endblock %}
 
 {% block body %}
+
 {% if app.user %}
         <div class="mb-3 flex justify-end my-3 mx-3">
             <a href="{{ path('app_logout') }}" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se déconnecter</a>
         </div>                   
 {% endif %}
 
-    <div class="flex justify-center">
-    
+    <div class="flex text-center justify-center my-5">
+
         {% for user in user %}
             {% for roles in user.roles %}
                 {% if roles == "ROLE_ADMIN" %}
-                {{form_start(form) }}
+                <div class="form">
+                    {{form_start(form, {'attr': {'class': 'w-full my-5 flex flex-col items-center'}}) }}
+                        <h1 class="text-center text-xl">Enregistrer un nouveau patient :</h1>
+                        <div class="my-3 flex formInputs">
+                            <div class="my-3 ">
+                            {{ form_label(form.lastName, 'Nom : ')}}
+                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.lastName) }}
+                            </div>
 
-                {{ form_label(form.lastName, 'Nom : ')}}
-                {{ form_widget(form.lastName, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.lastName) }}
-
-                {{ form_label(form.firstName, 'Prénom : ')}}
-                {{ form_widget(form.firstName, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.firstName) }}
-                    
-                {{ form_label(form.email, 'Email : ')}}
-                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.email) }}
-
-                {{ form_label(form.password, 'Mot de passe : ')}}
-                {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.password) }}
-
-                {{ form_label(form.roles, 'Role : ')}}
-                {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.roles) }} 
-
-            
-                {{ form_label(form.diet, 'Régime alimentaire : ')}}
-                {{ form_widget(form.diet, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.diet) }} 
+                            <div class="my-3 ">
+                            {{ form_label(form.firstName, 'Prénom : ')}}
+                            {{ form_widget(form.firstName, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.firstName) }}
+                            </div>
+                        </div>
                 
-                {{ form_label(form.allergens, 'Allergies alimentaires : ')}}
-                {{ form_widget(form.allergens, {'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.allergens) }} 
+                        <div class="my-3 flex formInputs">
+                        <div class="my-3">
+                            {{ form_label(form.email, 'Email : ')}}
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
                 
-                    <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
-                        Créer 
-                    </button>
+                        <div class="my-3">
+                            {{ form_label(form.password, 'Mot de passe : ')}}
+                            {{ form_widget(form.password, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.password) }}
+                        </div>
+                        </div>
 
-                {{ form_end(form) }}
+                        <div class="my-3 flex">
+                            {{ form_label(form.roles, 'Role :')}}
+                            {{ form_widget(form.roles, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.roles) }} 
+                        </div>
 
+                        <div class="formInputs my-3 flex">
+                        <div class="my-3">
+                            {{ form_label(form.diet, 'Régime alimentaire : ')}}
+                            {{ form_widget(form.diet, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_errors(form.diet) }} 
+                        </div>
+
+                        <div class="my-3">
+                            {{ form_label(form.allergens, 'Allergies alimentaires : ')}}
+                            {{ form_widget(form.allergens, {'attr': {'class': 'form-control, rounded' }}) }}
+                            {{ form_errors(form.allergens) }} 
+                        </div>
+                        </div>
+                
+                        <div class="my-3 flex justify-center">
+                            <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
+                                Créer 
+                            </button>
+                        </div>
+
+                        <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
+                            Retour à l'accueil
+                        </button>
+                        
+                    {{ form_end(form) }}
+                </div>
                 {% endif %}
              {% endfor %}
         {% endfor %}
     
-
+    </div>
 {% endblock %}

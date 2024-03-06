@@ -42,6 +42,7 @@ class UserType extends AbstractType
                 'choice_label' => 'description',
                 'multiple' => true,
             ])
+
         ;
     }
 
