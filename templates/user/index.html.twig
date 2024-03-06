@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Espace administratif {% endblock %}
+
+{% block body %}
+{% if app.user %}
+        <div class="mb-3 flex justify-end my-3 mx-3">
+            <a href="{{ path('app_logout') }}" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se déconnecter</a>
+        </div>                   
+    {% endif %}
+
+    <h1 class="text-xl text-center py-5"> Bienvenue dans votre espace personnel !</h1>
+    <h2 class="text-center py-3"> Liste des patients </h2>
+    
+    <div class="flex justify-center">
+    {% for user in user %}
+    {% for roles in user.roles %}
+        {% if roles == "ROLE_ADMIN" %}
+            <table class="border table-auto text-sm text-left">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-4 py-3">Nom de famille</th>
+                    <th scope="col" class="px-4 py-3">Prénom</th>
+                    <th scope="col" class="px-4 py-3">Email</th>
+                    <th scope="col" class="px-4 py-3">Régime alimentaire</th>
+                    <th scope="col" class="px-4 py-3">Allergies</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border text-center">
+                    <th scope="row" class="px-2 py-3 font-medium text-gray-90"> {{ user.lastName }} </th>
+                    <td scope="row" class="px-4 py-3"> {{ user.firstName }} </td>
+                    <td  scope="row" class="px-4 py-3"> {{ user.email }} </td>
+                    {% for allergens in user %}
+                    <td class="px-4 py-3"> {{ user.allergens }} </td>
+                    {% endfor %}
+                    {% for diet in user %}
+                    <td class="px-4 py-3"> {{ user.diet }} </td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+        {% endif %}
+    {% endfor %}
+    {% endfor %}
+    </div>
+
+    <div class="flex justify-center flex-wrap my-5">
+    <a href="#" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        Ajouter un patient
+    </a>
+
+   
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace personnel{% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+        <div class="mb-3 flex justify-end my-3 mx-3">
+            <a href="{{ path('app_logout') }}" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se déconnecter</a>
+        </div>                   
+    {% endif %}
+
+    <h1 class="text-xl text-center"> Bienvenue dans votre espace personnel !</h1>
+
+    {% for role in user.roles %}
+        {% if role == "ROLE_ADMIN" %}
+            <h2> Liste des utilisateurs </h2>
+            {% for user in users %}
+                {{ user.last_name }}
+                {{ user.first_name }}
+                {{ user.email }}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

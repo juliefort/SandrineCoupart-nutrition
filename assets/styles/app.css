@@ -32,6 +32,11 @@ h1 {
     font-family: "Baloo Bhaina 2", sans-serif;
 }
 
+.border
+{
+    border-width: 0.2rem;
+    border-color: #DC9A7D;
+}
 /* HEADER */
 
 .burger-menu 

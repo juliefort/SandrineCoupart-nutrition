@@ -70,4 +70,5 @@ class Allergens
 
         return $this;
     }
+
 }
