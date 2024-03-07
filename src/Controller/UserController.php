@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Diet;
+use App\Entity\Allergens;
 use App\Form\UserType;
 use App\Repository\AllergensRepository;
 use App\Repository\DietRepository;
@@ -27,7 +29,7 @@ class UserController extends AbstractController
     #[Route('/user/register', name: 'app_user_register')]
     public function registerPatient(UserRepository $userRepo, Request $request, 
     EntityManagerInterface $entityManager,DietRepository $dietRepo, 
-    AllergensRepository $allergensRepo,): Response
+    AllergensRepository $allergensRepo): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -40,10 +42,10 @@ class UserController extends AbstractController
             $user->setPassword($hashedPassword);
 
             $roles = $user->getRoles();
-
             // Enregistre les rôles dans l'entité User
             $user->setRoles($roles);
 
+            $user = $form->getData();
             $entityManager->persist($user);
             $entityManager->flush(); // Mise à jour vers la base de données
 

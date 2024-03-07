@@ -13,9 +13,7 @@
     <h2 class="text-center py-3"> Liste des patients </h2>
     
     <div class="flex justify-center">
-    {% for user in user %}
-    {% for roles in user.roles %}
-        {% if roles == "ROLE_ADMIN" %}
+    
             <table class="border table-auto text-sm text-left">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
@@ -26,25 +24,25 @@
                     <th scope="col" class="px-4 py-3">Allergies</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="border text-center">
-                    {% for user in user %}
-                    <th scope="row" class="px-2 py-3 font-medium text-gray-90"> {{ user.lastName }} </th>
+                {% for user in user %}
+                <tbody id="body{{ loop.index }}">
+                  
+                  <tr class="border text-center" id="body{{ loop.index }}">
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-90">  {{ user.lastName }} </th>
                     <td scope="row" class="px-4 py-3"> {{ user.firstName }} </td>
-                    <td  scope="row" class="px-4 py-3"> {{ user.email }} </td>
-                    {% for allergens in user %}
-                    <td class="px-4 py-3"> {{ user.allergens }} </td>
+                    <td scope="row" class="px-4 py-3"> {{ user.email }} </td>
+                      {% for allergens in user.allergens %}
+                    <td class="px-4 py-3"> {{ allergens.description }} </td>
+                      {% endfor %}
+                    {% for diet in user.diet %}
+                    <td class="px-4 py-3"> {{ diet.description }} </td>
                     {% endfor %}
-                    {% for diet in user %}
-                    <td class="px-4 py-3"> {{ user.diet }} </td>
-                    {% endfor %}
-                    {% endfor %}
+                        
                   </tr>
                 </tbody>
+              {% endfor %}
               </table>
-        {% endif %}
-    {% endfor %}
-    {% endfor %}
+       
     </div>
 
     <div class="flex justify-center flex-wrap my-5">

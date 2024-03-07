@@ -33,11 +33,13 @@ class UserType extends AbstractType
             ->add('lastName')
             ->add('firstName')
             ->add('allergens', EntityType::class, [
+                'by_reference' => false,
                 'class' => Allergens::class,
                 'choice_label' => 'description',
                 'multiple' => true,
             ])
             ->add('diet', EntityType::class, [
+                'by_reference' => false,
                 'class' => Diet::class,
                 'choice_label' => 'description',
                 'multiple' => true,
