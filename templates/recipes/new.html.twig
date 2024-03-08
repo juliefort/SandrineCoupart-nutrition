@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+
+    <div class="flex text-center justify-center my-5">
+        {% for user in user %}
+            {% for roles in user.roles %}
+                {% if roles == "ROLE_ADMIN" %}
+                    <div class="form">
+
+                        {{form_start(form, {'attr': {'class': 'w-full my-5 flex flex-col items-center'}}) }}
+                            <h1 class="text-center text-xl">Ajouter une recette :</h1>
+                            <div class="my-1 flex formInputs">
+                                <div class="my-1">
+                                    {{ form_label(form.title, 'Titre : ')}}
+                                    {{ form_widget(form.title, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.title) }}
+                                 </div>
+
+                                <div class="my-1">
+                                    {{ form_label(form.description, 'Description : ')}}
+                                    {{ form_widget(form.description, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.description) }}
+                                </div>
+                            </div>
+                    
+                            <div class="my-1 flex formInputs">
+                                <div class="my-1">
+                                    {{ form_label(form.timeMade, 'Temps de préparation : ')}}
+                                    {{ form_widget(form.timeMade, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.timeMade) }}
+                                </div>
+                
+                                <div class="my-1">
+                                    {{ form_label(form.restingTime, 'Temps de repos : ')}}
+                                    {{ form_widget(form.restingTime, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.restingTime) }}
+                                </div>
+                            </div>
+
+                            <div class="my-1">
+                                {{ form_label(form.cookingTime, 'Temps de cuisson : ')}}
+                                {{ form_widget(form.cookingTime, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                {{ form_errors(form.cookingTime) }}
+                            </div>
+
+                            <div class="formInputs my-1 flex">
+                                <div class="my-1">
+                                    {{ form_label(form.ingredients, 'Ingrédients : ')}}
+                                    {{ form_widget(form.ingredients, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.ingredients) }}
+                                </div>
+
+                                <div class="my-1">
+                                    {{ form_label(form.steps, 'Étapes : ')}}
+                                    {{ form_widget(form.steps, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                    {{ form_errors(form.steps) }}
+                                </div>
+                            </div>
+
+                            <div class="formInputs my-1 flex">
+                                <div class="my-1">
+                                    {{ form_label(form.allergens, 'Allergènes : ')}}
+                                    {{ form_widget(form.allergens, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                </div>
+
+                                <div class="my-1">
+                                    {{ form_label(form.diet, 'Régime alimentaire: ')}}
+                                    {{ form_widget(form.diet, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                </div>
+                            </div>
+                
+                            <div class="my-3 flex justify-center">
+                                <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
+                                    Créer 
+                                </button>
+                            </div>
+
+                            <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
+                                Retour à l'accueil
+                            </button>
+                        
+                        {{ form_end(form) }}
+
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -13,7 +13,7 @@
 {% endif %}
 
     <div class="flex text-center justify-center my-5">
-
+        
         {% for user in user %}
             {% for roles in user.roles %}
                 {% if roles == "ROLE_ADMIN" %}
@@ -23,49 +23,49 @@
                         <div class="my-3 flex formInputs">
                             <div class="my-3 ">
                             {{ form_label(form.lastName, 'Nom : ')}}
-                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_widget(form.lastName, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
                             {{ form_errors(form.lastName) }}
                             </div>
 
                             <div class="my-3 ">
                             {{ form_label(form.firstName, 'Prénom : ')}}
-                            {{ form_widget(form.firstName, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_widget(form.firstName, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
                             {{ form_errors(form.firstName) }}
                             </div>
                         </div>
                 
                         <div class="my-3 flex formInputs">
-                        <div class="my-3">
-                            {{ form_label(form.email, 'Email : ')}}
-                            {{ form_widget(form.email, {'attr': {'class': 'form-control, rounded'}}) }}
-                            {{ form_errors(form.email) }}
-                        </div>
+                            <div class="my-3">
+                                {{ form_label(form.email, 'Email : ')}}
+                                {{ form_widget(form.email, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                {{ form_errors(form.email) }}
+                            </div>
                 
-                        <div class="my-3">
-                            {{ form_label(form.password, 'Mot de passe : ')}}
-                            {{ form_widget(form.password, {'attr': {'class': 'form-control, rounded'}}) }}
-                            {{ form_errors(form.password) }}
-                        </div>
+                            <div class="my-3">
+                                {{ form_label(form.password, 'Mot de passe : ')}}
+                                {{ form_widget(form.password, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                {{ form_errors(form.password) }}
+                            </div>
                         </div>
 
                         <div class="my-3 flex">
                             {{ form_label(form.roles, 'Role :')}}
-                            {{ form_widget(form.roles, {'attr': {'class': 'form-control, rounded'}}) }}
+                            {{ form_widget(form.roles, {'attr': {'class': ' flex form-control rounded'}}) }}
                             {{ form_errors(form.roles) }} 
                         </div>
 
                         <div class="formInputs my-3 flex">
-                        <div class="my-3">
-                            {{ form_label(form.diet, 'Régime alimentaire : ')}}
-                            {{ form_widget(form.diet, {'attr': {'class': 'form-control, rounded'}}) }}
-                            {{ form_errors(form.diet) }} 
-                        </div>
+                            <div class="my-3">
+                                {{ form_label(form.diet, 'Régime alimentaire : ')}}
+                                {{ form_widget(form.diet, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                                {{ form_errors(form.diet) }} 
+                            </div>
 
-                        <div class="my-3">
-                            {{ form_label(form.allergens, 'Allergies alimentaires : ')}}
-                            {{ form_widget(form.allergens, {'attr': {'class': 'form-control, rounded' }}) }}
-                            {{ form_errors(form.allergens) }} 
-                        </div>
+                            <div class="my-3">
+                                {{ form_label(form.allergens, 'Allergies alimentaires : ')}}
+                                {{ form_widget(form.allergens, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' }}) }}
+                                {{ form_errors(form.allergens) }} 
+                            </div>
                         </div>
                 
                         <div class="my-3 flex justify-center">

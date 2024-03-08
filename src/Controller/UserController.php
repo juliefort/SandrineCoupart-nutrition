@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Diet;
-use App\Entity\Allergens;
 use App\Form\UserType;
 use App\Repository\AllergensRepository;
 use App\Repository\DietRepository;

@@ -10,3 +10,11 @@ ALTER TABLE allergens ADD FOREIGN KEY (user_id) REFERENCES user(id);
 
 ALTER TABLE user ADD FOREIGN KEY (diet_id) REFERENCES diet(id);
 ALTER TABLE diet ADD FOREIGN KEY (user_id) REFERENCES user(id);
+
+CREATE TABLE recipes(id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL, title VARCHAR(255) NOT NULL, content LONGTEXT NOT NULL, timeMade VARCHAR(255) NOT NULL, restingTime VARCHAR(255) NOT NULL, cookingTime VARCHAR(255) NOT NULL, ingredients LONGTEXT NOT NULL, steps LONGTEXT NOT NULL);
+ALTER TABLE recipes CHANGE content description LONGTEXT NOT NULL;
+
+ALTER TABLE recipes ADD FOREIGN KEY (allergens_id) REFERENCES allergens(id);
+ALTER TABLE allergens ADD FOREIGN KEY (recipes_id) REFERENCES recipes(id);
+ALTER TABLE recipes ADD FOREIGN KEY (diet_id) REFERENCES diet(id); 
+ALTER TABLE diet ADD FOREIGN KEY (recipes_id) REFERENCES recipes(id);

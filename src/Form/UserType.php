@@ -12,14 +12,24 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\SubmitButton;
-
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email',  EmailType::class, [
+                'required' => true,
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+                        'message' => 'Veuillez entrer une adresse mail valide.'       
+                    ])
+                    ],
+            ]
+            )
             ->add('roles', CollectionType::class, [
                 'entry_type'   => ChoiceType::class,
                 'entry_options'  => [
