@@ -2,13 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\allergens;
-use App\Entity\diet;
+use App\Entity\Allergens;
+use App\Entity\Diet;
 use App\Entity\Recipes;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RecipesType extends AbstractType
 {
@@ -26,13 +27,17 @@ class RecipesType extends AbstractType
                 'class' => Allergens::class,
                 'choice_label' => 'description',
                 'multiple' => true,
+                'expanded' => true,
             ])
             ->add('diet', EntityType::class, [
                 'class' => Diet::class,
                 'choice_label' => 'description',
                 'multiple' => true,
+                'expanded' => true,
             ])
-        ;
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image : '
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

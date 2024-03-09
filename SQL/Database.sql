@@ -18,3 +18,6 @@ ALTER TABLE recipes ADD FOREIGN KEY (allergens_id) REFERENCES allergens(id);
 ALTER TABLE allergens ADD FOREIGN KEY (recipes_id) REFERENCES recipes(id);
 ALTER TABLE recipes ADD FOREIGN KEY (diet_id) REFERENCES diet(id); 
 ALTER TABLE diet ADD FOREIGN KEY (recipes_id) REFERENCES recipes(id);
+
+ALTER TABLE recipes ADD image_name VARCHAR(255) DEFAULT NULL;
+ALTER TABLE recipes ADD updated_at DATETIME DEFAUT NULL;

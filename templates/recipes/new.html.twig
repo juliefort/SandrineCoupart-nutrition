@@ -60,16 +60,19 @@
                                 </div>
                             </div>
 
-                            <div class="formInputs my-1 flex">
-                                <div class="my-1">
+                            <div class="my-1">
                                     {{ form_label(form.allergens, 'Allergènes : ')}}
                                     {{ form_widget(form.allergens, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
-                                </div>
+                            </div>
 
-                                <div class="my-1">
+                            <div class="my-1">
                                     {{ form_label(form.diet, 'Régime alimentaire: ')}}
                                     {{ form_widget(form.diet, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
-                                </div>
+                             </div>
+                            
+                             <div class="my-1">
+                                {{ form_label(form.imageFile, 'Ajouter une image: ')}}
+                                {{ form_widget(form.imageFile, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
                             </div>
                 
                             <div class="my-3 flex justify-center">

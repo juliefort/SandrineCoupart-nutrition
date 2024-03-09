@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+    
+    {% for recipes in recipes %}
+    <div class="styleRecipes">
+        <div class="cards">
+            <div class="headRecipe my-5 outerlined">
+                <img class="w-full imageRecipes" src="{{ asset('upload/recipes/' ~ recipes.imageName )}}" alt="{{ recipes.imageName }}">
+
+                <div class="flex-column">
+                    <h1 class="recipesTitle text-center py-3"> {{ recipes.title }} </h1>
+                    <p class="text-gray-700 text-base my-5">
+                    <span class="underlined"> Description : </span>
+                    </p>
+                    <p>{{ recipes.description }}</p>
+
+                    <div class="icons flex flex-row py-1">
+                        <div class="my-3">
+                            <svg style="height: 3rem"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            <p class="text-gray-700 text-lg">{{ recipes.timeMade }} </p>
+                        </div>
+                        <div class="my-3">
+                            <img src="/image/recipes/cooking-pot-svgrepo-com.svg" style="max-width: 3rem;">
+                            <p class="text-gray-700 text-lg"> {{ recipes.restingtime }} </p>
+                        </div>
+                        <div class="my-3">
+                            <img src="/image/recipes/resting-time-on-bed-for-body-recover-after-fitness-svgrepo-com.svg" style="max-width: 3rem;">
+                            <p class="text-gray-700 text-lg"> {{ recipes.cookingtime }} </p>
+                        </div>
+                    </div>
+
+                    <div class="allergensAndDiet my-5 flex">
+                    <div class="my-5">
+                        <p class="mb-3"> 
+                            <span class="underlined"> 
+                            Allergènes
+                            </span>
+                        </p>
+                        {% for allergens in recipes.allergens %}
+                            <p class="text-gray-700 text-lg"> {{ allergens.description }} </p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="my-5">
+                        <p class="mb-3"> 
+                            <span class="underlined"> 
+                            Régime alimentaire :
+                            </span> 
+                        </p>
+                        {% for diet in recipes.diet %}
+                            <p class="text-gray-700 text-lg"> {{ diet.description }} </p>
+                        {% endfor %}
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="secondPart">
+                <div class="my-5 py-5">
+                    <p class="mb-3"> 
+                        <span class="underlined"> 
+                            Ingrédients : 
+                        </span> 
+                    </p>
+                    <p class="text-gray-700 text-xl py-3">  {{ recipes.ingredients|nl2br }} </p>
+                </div>
+                <div class="my-5 py-5">
+                    <p class="mb-3"> 
+                        <span class="underlined"> 
+                        Les étapes : 
+                        </span>
+                    </p>
+                    <p class="text-gray-700 text-xl py-3"> {{ recipes.steps|nl2br }} </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

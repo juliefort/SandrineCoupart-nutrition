@@ -37,6 +37,17 @@ h1 {
     border-width: 0.2rem;
     border-color: #DC9A7D;
 }
+
+.underlined
+{
+    font-family: "Baloo Bhaina 2", sans-serif;
+    border-bottom: 0.2rem solid #DC9A7D ;
+}
+
+.outerlined
+{
+    border-bottom: 0.1rem solid #DC9A7D ;
+}
 /* HEADER */
 
 .burger-menu 
@@ -109,6 +120,47 @@ h1 {
     background-color: #BDB9B3;
     border-radius: 0.3rem;
 }
+
+/* RECETTES */ 
+ .imageRecipes
+ {
+    border-radius: 0.8rem;
+    width: 35rem;
+    height: 25rem;
+    object-fit: cover;
+ }
+
+.recipesTitle 
+{
+    color:#609A7D;
+    font-size: 2rem;
+}
+.cards 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.icons 
+{
+    gap: 7rem;
+}
+
+.headRecipe
+{
+    gap: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.allergensAndDiet 
+{
+    gap: 8rem;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 1024px) {
@@ -123,6 +175,7 @@ h1 {
        gap: 5%;
        letter-spacing: 0.1rem;
     }
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -176,4 +229,15 @@ h1 {
         width: 25rem;
     }
 
+    .headRecipe
+    {
+        flex-direction: row;
+    }
+
+    .secondPart
+    {
+        display: flex;
+        gap: 12rem;
+    }
+    
     }

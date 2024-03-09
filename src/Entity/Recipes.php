@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: RecipesRepository::class)]
+#[Vich\Uploadable]
 class Recipes
 {
     #[ORM\Id]
@@ -37,11 +40,20 @@ class Recipes
     #[ORM\Column(type: Types::TEXT)]
     private ?string $steps = null;
 
-    #[ORM\ManyToMany(targetEntity: allergens::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
     private Collection $allergens;
 
-    #[ORM\ManyToMany(targetEntity: diet::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
     private Collection $diet;
+
+    #[Vich\UploadableField(mapping: 'recipes', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()
     {
@@ -186,4 +198,32 @@ class Recipes
         return $this;
     }
 
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
 }
+
+
