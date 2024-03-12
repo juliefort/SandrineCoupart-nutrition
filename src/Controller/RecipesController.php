@@ -46,7 +46,7 @@ class RecipesController extends AbstractController
         ]);
     }
 
-    #[Route('/recipes/{id}', name: 'app_recipes', methods: 'GET')]
+    #[Route('/recipes', name: 'app_recipes', methods: 'GET')]
     public function showRecipes(DietRepository $dietRepo, 
     AllergensRepository $allergensRepo, UserRepository $userRepo, RecipesRepository $recipesRepo)
     {
