@@ -7,12 +7,17 @@
         <div class="mb-3 flex justify-end my-3 mx-3">
             <a href="{{ path('app_logout') }}" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se déconnecter</a>
         </div>                   
-    {% endif %}
+{% endif %}
 
-    <h1 class="text-xl text-center py-5"> Bienvenue dans votre espace personnel !</h1>
-    <h2 class="text-center py-3"> Liste des patients </h2>
-    
-    <div class="flex justify-center">
+    <div class="flex flex-nowrap adminDashboard">
+      
+        {% include 'dashboard/dashboard.html.twig' %}
+
+        <div>
+          <h1 class="text-xl text-center py-5"> Bienvenue dans votre espace personnel !</h1>
+          <h2 class="text-center py-3"> Liste des patients </h2>
+  
+          <div class="flex justify-center">
     
             <table class="border table-auto text-sm text-left">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -49,6 +54,10 @@
     <a href="#" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Ajouter un patient
     </a>
+    </div>
+
+      </div>
+    </div>
 
    
 {% endblock %}

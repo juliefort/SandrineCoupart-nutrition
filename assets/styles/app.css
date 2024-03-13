@@ -69,6 +69,18 @@ h1 {
     border-radius: 0.2rem;
 }
 
+/* Dashboard */
+
+.toolBar
+{
+    height: 50rem;
+    width: 10rem;
+}
+
+.adminDashboard
+{
+    gap: 10%;
+}
 /* Services */
 
 .services 
@@ -116,7 +128,8 @@ h1 {
 
 .form 
 {
-    width: 55rem;
+    width: 45rem;
+    height: 50%;
     background-color: #BDB9B3;
     border-radius: 0.3rem;
 }
@@ -161,7 +174,32 @@ h1 {
     gap: 8rem;
 }
 
+/* Contact */
+
+.containerAdmin
+{
+    width: 40rem;
+    height: 45rem;
+    border-radius: 0.2rem;
+}
+
 /* MEDIA QUERIES */
+
+@media screen and (min-width: 768px)
+{
+    .adminDashboard
+    {
+        gap: 10%;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    .adminDashboard
+    {
+        gap: 15%;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .menu 
@@ -175,7 +213,7 @@ h1 {
        gap: 5%;
        letter-spacing: 0.1rem;
     }
-
+ 
 }
 
 @media screen and (min-width: 1280px) {
@@ -239,5 +277,28 @@ h1 {
         display: flex;
         gap: 5rem;
     }
-    
+
+    .toolBar
+    {   
+        width: 12rem;
     }
+
+    .adminDashboard
+    {
+        gap: 15%;
+    }
+
+}
+
+@media screen and (min-width: 1800px)
+{
+    .adminDashboard
+    {
+        gap: 25%;
+    }
+
+    .containerAdmin
+    {
+        width: 60rem;
+    }
+}

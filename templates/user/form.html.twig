@@ -12,22 +12,22 @@
         </div>                   
 {% endif %}
 
-    <div class="flex text-center justify-center my-5">
-        
+    <div class="flex text-center my-5 adminDashboard items-center">
+        {% include 'dashboard/dashboard.html.twig' %}
         {% for user in user %}
             {% for roles in user.roles %}
                 {% if roles == "ROLE_ADMIN" %}
                 <div class="form">
-                    {{form_start(form, {'attr': {'class': 'w-full my-5 flex flex-col items-center'}}) }}
+                    {{form_start(form, {'attr': {'class': 'w-full my-3 flex flex-col items-center'}}) }}
                         <h1 class="text-center text-xl">Enregistrer un nouveau patient :</h1>
                         <div class="my-3 flex formInputs">
-                            <div class="my-3 ">
+                            <div class="my-3">
                             {{ form_label(form.lastName, 'Nom : ')}}
                             {{ form_widget(form.lastName, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
                             {{ form_errors(form.lastName) }}
                             </div>
 
-                            <div class="my-3 ">
+                            <div class="my-3">
                             {{ form_label(form.firstName, 'Prénom : ')}}
                             {{ form_widget(form.firstName, {'attr': {'class': 'form-control, rounded, appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
                             {{ form_errors(form.firstName) }}
@@ -70,7 +70,7 @@
                 
                         <div class="my-3 flex justify-center">
                             <button class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit"> 
-                                Créer 
+                                Ajouter
                             </button>
                         </div>
 

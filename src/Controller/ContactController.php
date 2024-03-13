@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\ContactRepository;
+use App\Repository\UserRepository;
 use App\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,6 +34,16 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/admin/contact', name: 'app_admin_contact', methods: 'GET')]
+    public function adminContact(ContactRepository $contactRepo, UserRepository $userRepo)
+    {
+        return $this->render('contact/show.html.twig', [
+            'controller_name' => 'ContactController',
+            'contact' => $contactRepo->findBy([], []),
+            'user' => $userRepo->findBy([], []),
         ]);
     }
 }

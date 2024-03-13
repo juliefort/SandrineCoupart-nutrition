@@ -4,7 +4,8 @@
 
 {% block body %}
 
-    <div class="flex text-center justify-center my-5">
+    <div class="flex text-center my-5 adminDashboard items-center">
+        {% include 'dashboard/dashboard.html.twig' %}
         {% for user in user %}
             {% for roles in user.roles %}
                 {% if roles == "ROLE_ADMIN" %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de contact{% endblock %}
+
+{% block body %}
+    <div class="flex flex-wrap my-5 adminDashboard items-center">
+      {% include 'dashboard/dashboard.html.twig' %}
+        <div class="containerAdmin">
+            <table class="border table-auto text-sm text-left">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr class="text-center">
+                    <th scope="col" class="px-4 py-3">Nom de famille</th>
+                    <th scope="col" class="px-4 py-3">Prénom</th>
+                    <th scope="col" class="px-4 py-3">Email</th>
+                    <th scope="col" class="px-4 py-3">Numéro de téléphone</th>
+                    <th scope="col" class="px-4 py-3">À propos de</th>
+                    <th scope="col" class="px-4 py-3">Message</th>
+                  </tr>
+                </thead>
+                {% for contact in contact %}
+                <tbody id="body{{ loop.index }}">
+                  
+                  <tr class="border text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400" id="body{{ loop.index }}">
+                    <th scope="row" class="px-4 py-3 font-medium">  {{ contact.lastName }} </th>
+                    <td scope="row" class="px-4 py-3"> {{ contact.firstName }} </td>
+                    <td scope="row" class="px-4 py-3"> {{ contact.email }} </td>
+                    <td class="px-4 py-3"> {{ contact.phoneNumber}} </td>
+                    <td class="px-4 py-3"> {{ contact.subject }} </td> 
+                    <td class="px-4 py-3"> {{ contact.message }} </td>                        
+                  </tr>
+                </tbody>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}
