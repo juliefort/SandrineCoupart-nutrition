@@ -17,12 +17,47 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DashboardController extends AbstractDashboardController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
     public function getDashboard(UserRepository $userRepo): Response
     {
         return $this->render('./dashboard/dashboard.html.twig', [
             'user' => $userRepo->findAll(),
         ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/contact/index', name: 'admin_contact_index')]
+    public function getMessages(UserRepository $userRepo)
+    {
+        return $this->render('./contact/show.html.twig', [
+            'user' => $userRepo->findAll(),
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/user/new', name: 'admin_user_new')]
+    public function addUser(UserRepository $userRepo)
+    {
+        return $this->render('./user/new.html.twig', [
+            'user' => $userRepo->findAll(),
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/user/new', name: 'admin_user_new')]
+    public function showUser(UserRepository $userRepo)
+    {
+        return $this->render('./user/show.html.twig', [
+            'user' => $userRepo->findAll(),
+        ]);
+    }
+
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/admin/recipes/new', name: 'admin_recipes_new')]
+    public function addRecipes(UserRepository $userRepo)
+    {
+        return $this->render('./recipes/new.html.twig');
     }
 
     public function configureDashboard(): Dashboard

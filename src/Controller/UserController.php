@@ -24,7 +24,7 @@ class UserController extends AbstractController
         $this->userPasswordHasher = $userPasswordHasher;
     }
 
-    #[Route('/user/register', name: 'app_user_register')]
+    #[Route('/admin/user/new', name: 'admin_user_new')]
     public function registerPatient(UserRepository $userRepo, Request $request, 
     EntityManagerInterface $entityManager,DietRepository $dietRepo, 
     AllergensRepository $allergensRepo): Response
@@ -58,8 +58,8 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user', name: 'app_user')]
-    public function users(UserRepository $userRepo, DietRepository $dietRepo, 
+    #[Route('/admin/user/index', name: 'admin_user_index')]
+    public function showUsers(UserRepository $userRepo, DietRepository $dietRepo, 
     AllergensRepository $allergensRepo): Response
     {
         return $this->render('user/index.html.twig', [

@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class RecipesController extends AbstractController
 {
 
-    #[Route('/recipes/new', name: 'app_recipes_new', methods: ['GET','POST'])]
+    #[Route('/admin/recipes/new', name: 'admin_recipes_new', methods: ['GET','POST'])]
     public function index(Request $request, 
     EntityManagerInterface $entityManager, DietRepository $dietRepo, 
     AllergensRepository $allergensRepo, UserRepository $userRepo

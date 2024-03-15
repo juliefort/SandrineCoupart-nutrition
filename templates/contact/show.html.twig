@@ -3,7 +3,7 @@
 {% block title %}Demande de contact{% endblock %}
 
 {% block body %}
-    <div class="flex flex-wrap my-5 adminDashboard items-center">
+    <div class="adminDashboard flex flex-wrap my-5 items-center">
       {% include 'dashboard/dashboard.html.twig' %}
         <div class="containerAdmin">
             <table class="border table-auto text-sm text-left">
@@ -18,7 +18,7 @@
                   </tr>
                 </thead>
                 {% for contact in contact %}
-                <tbody id="body{{ loop.index }}">
+                  <tbody id="body{{ loop.index }}">
                   
                   <tr class="border text-center bg-gray-50 dark:bg-gray-700 dark:text-gray-400" id="body{{ loop.index }}">
                     <th scope="row" class="px-4 py-3 font-medium">  {{ contact.lastName }} </th>
@@ -28,7 +28,7 @@
                     <td class="px-4 py-3"> {{ contact.subject }} </td> 
                     <td class="px-4 py-3"> {{ contact.message }} </td>                        
                   </tr>
-                </tbody>
+                  </tbody>
                 {% endfor %}
         </div>
     </div>

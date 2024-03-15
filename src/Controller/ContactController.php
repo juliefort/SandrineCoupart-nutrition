@@ -37,7 +37,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/contact', name: 'app_admin_contact', methods: 'GET')]
+    #[Route('/admin/contact/index', name: 'admin_contact_index', methods: 'GET')]
     public function adminContact(ContactRepository $contactRepo, UserRepository $userRepo)
     {
         return $this->render('contact/show.html.twig', [

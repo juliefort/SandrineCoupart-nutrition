@@ -48,6 +48,13 @@ h1 {
 {
     border-bottom: 0.1rem solid #DC9A7D ;
 }
+
+footer 
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 /* HEADER */
 
 .burger-menu 
@@ -73,7 +80,6 @@ h1 {
 
 .toolBar
 {
-    height: 50rem;
     width: 10rem;
 }
 
@@ -97,6 +103,14 @@ h1 {
 .containers > h3 
 {
     font-family: "Baloo Bhaina 2", sans-serif;
+}
+
+.servicesCard,
+.cards,
+.adminDashboard,
+.containerAdmin
+{
+    margin-bottom: 20rem;
 }
 
 .containers 
