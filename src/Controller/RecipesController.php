@@ -7,6 +7,7 @@ use App\Form\RecipesType;
 use App\Repository\AllergensRepository;
 use App\Repository\DietRepository;
 use App\Repository\RecipesRepository;
+use App\Repository\ReviewsRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,7 +49,7 @@ class RecipesController extends AbstractController
 
     #[Route('/recipes', name: 'app_recipes', methods: 'GET')]
     public function showRecipes(DietRepository $dietRepo, 
-    AllergensRepository $allergensRepo, UserRepository $userRepo, RecipesRepository $recipesRepo)
+    AllergensRepository $allergensRepo, UserRepository $userRepo, RecipesRepository $recipesRepo, ReviewsRepository $reviewsRepo)
     {
         return $this->render('recipes/show.html.twig', [
             'controller_name' => 'RecipesController',
@@ -56,6 +57,7 @@ class RecipesController extends AbstractController
             'allergens' => $allergensRepo->findBy([],[]),
             'user' => $userRepo->findBy([], []),
             'recipes' => $recipesRepo->findAll(),
+            'reviews' => $reviewsRepo->findAll(),
         ]);
     }
 }

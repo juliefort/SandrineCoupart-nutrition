@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'class': 'w-full my-5 flex flex-col items-center'}}) }}
+        <div class="flex justify-center">
+            <div class="form">
+                <h2 class="text-center"> Laisser un commentaire ! </h2>
+                <div class="my-1 flex formInputs">
+                    {{ form_label(form.user, 'Prénom: ')}}
+                    {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.user) }}
+                </div>
+                <div class="my-1 flex formInputs">
+                    {{ form_label(form.rating, 'Votre note : ')}}
+                    {{ form_widget(form.rating, {'attr': {'class': 'form-control', 'style' : 'display:none'}}) }}
+                    {{ form_errors(form.rating) }}
+                <div class="py-1">
+                    <i class="fa-regular fa-star" style="color:yellow" data-value="1"></i>
+                    <i class="fa-regular fa-star" style="color:yellow" data-value="2"></i>
+                    <i class="fa-regular fa-star" style="color:yellow" data-value="3"></i>
+                    <i class="fa-regular fa-star" style="color:yellow" data-value="4"></i>
+                    <i class="fa-regular fa-star" style="color:yellow" data-value="5"></i>
+                </div>
+                </div>
+                <div class="my-1 flex formInputs">
+                    {{ form_label(form.comment, 'Votre commentaire : ')}}
+                    {{ form_widget(form.comment, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.comment) }}
+                </div>
+                <div class="my-3 flex justify-center">
+                    <button type="submit" class="btn btn-lg text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"> Soumettre </button>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

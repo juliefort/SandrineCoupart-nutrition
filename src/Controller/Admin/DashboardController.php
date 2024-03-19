@@ -55,9 +55,18 @@ class DashboardController extends AbstractDashboardController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin/recipes/new', name: 'admin_recipes_new')]
-    public function addRecipes(UserRepository $userRepo)
+    public function addRecipes()
     {
         return $this->render('./recipes/new.html.twig');
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/recipes/new/review', name: 'app_recipes_new_review')]
+    public function addReview(UserRepository $userRepo)
+    {
+        return $this->render('./reviews/new.html.twig', [
+            'user' => $userRepo->findAll(),
+        ]);
     }
 
     public function configureDashboard(): Dashboard

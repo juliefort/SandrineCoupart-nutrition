@@ -55,10 +55,14 @@ class Recipes
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\OneToMany(targetEntity: Reviews::class, mappedBy: 'recipes', cascade: ['persist', 'remove'])]
+    private Collection $review;
+
     public function __construct()
     {
         $this->allergens = new ArrayCollection();
         $this->diet = new ArrayCollection();
+        $this->review = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,6 +226,36 @@ class Recipes
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection<int, Reviews>
+     */
+    public function getReview(): Collection
+    {
+        return $this->review;
+    }
+
+    public function addReview(Reviews $review): static
+    {
+        if (!$this->review->contains($review)) {
+            $this->review->add($review);
+            $review->setRecipes($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Reviews $review): static
+    {
+        if ($this->review->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getRecipes() === $this) {
+                $review->setRecipes(null);
+            }
+        }
+
+        return $this;
     }
 
 }
