@@ -27,6 +27,8 @@
                     <th scope="col" class="px-4 py-3">Email</th>
                     <th scope="col" class="px-4 py-3">Régime alimentaire</th>
                     <th scope="col" class="px-4 py-3">Allergies</th>
+                    <th scope="col" class="px-4 py-3">Modifier</th>
+                    <th scope="col" class="px-4 py-3">Supprimer</th>
                   </tr>
                 </thead>
                 {% for user in user %}
@@ -41,6 +43,16 @@
                       {% endfor %}
                     {% for diet in user.diet %}
                     <td class="px-4 py-3"> {{ diet.description }} </td>
+                    <td class="px-4 py-3"> 
+                      <a href="{{ path('admin_user_edit', { 'id' : user.id }) }}" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Modifier
+                      </a> 
+                    </td>
+                    <td class="px-4 py-3"> 
+                      <a href="{{ path('admin_user_delete', { 'id' : user.id }) }}" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Supprimer
+                      </a> 
+                    </td>
                     {% endfor %}
                         
                   </tr>
@@ -51,7 +63,7 @@
     </div>
 
     <div class="flex justify-center flex-wrap my-5">
-    <a href="#" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <a href="{{ path('admin_user_new') }}" type="button" class="btn text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Ajouter un patient
     </a>
     </div>

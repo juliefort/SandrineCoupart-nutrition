@@ -19,10 +19,10 @@ class Diet
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'diet', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'diet')]
     private Collection $users;
 
-    #[ORM\ManyToMany(targetEntity: Recipes::class, mappedBy: 'diet', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Recipes::class, mappedBy: 'diet')]
     private Collection $recipes;
 
     public function __construct()

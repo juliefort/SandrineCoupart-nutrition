@@ -40,10 +40,10 @@ class Recipes
     #[ORM\Column(type: Types::TEXT)]
     private ?string $steps = null;
 
-    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'recipes', cascade: ['persist'])]
     private Collection $allergens;
 
-    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'recipes', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'recipes', cascade: ['persist'])]
     private Collection $diet;
 
     #[Vich\UploadableField(mapping: 'recipes', fileNameProperty: 'imageName')]

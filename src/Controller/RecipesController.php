@@ -36,7 +36,7 @@ class RecipesController extends AbstractController
             $entityManager->persist($recipes);
             $entityManager->flush(); // Mise à jour vers la base de données
 
-            return $this->redirectToRoute('app_user');
+            return $this->redirectToRoute('admin_user_index');
         }
         return $this->render('recipes/new.html.twig', [
             'controller_name' => 'RecipesController',

@@ -38,13 +38,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $firstName = null;
 
-    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'users', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Allergens::class, inversedBy: 'users' , cascade: ['persist'])]
     private Collection $allergens;
 
-    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'users', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'users', cascade: ['persist'])]
     private Collection $diet;
 
-    #[ORM\OneToMany(targetEntity: Reviews::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(targetEntity: Reviews::class, mappedBy: 'user', cascade: ['persist'])]
     private Collection $review;
 
     public function __construct()

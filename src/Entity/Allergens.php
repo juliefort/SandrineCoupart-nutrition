@@ -19,10 +19,10 @@ class Allergens
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'allergens', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'allergens')]
     private Collection $users;
 
-    #[ORM\ManyToMany(targetEntity: Recipes::class, mappedBy: 'allergens', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToMany(targetEntity: Recipes::class, mappedBy: 'allergens')]
     private Collection $recipes;
 
     public function __construct()

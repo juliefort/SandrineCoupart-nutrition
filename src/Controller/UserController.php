@@ -24,7 +24,7 @@ class UserController extends AbstractController
         $this->userPasswordHasher = $userPasswordHasher;
     }
 
-    #[Route('/admin/user/new', name: 'admin_user_new')]
+    #[Route('/admin/user/new', name: 'admin_user_new', methods : ['GET', 'POST'])]
     public function registerPatient(UserRepository $userRepo, Request $request, 
     EntityManagerInterface $entityManager,DietRepository $dietRepo, 
     AllergensRepository $allergensRepo): Response
@@ -47,7 +47,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush(); // Mise à jour vers la base de données
 
-            return $this->redirectToRoute('app_user');
+            return $this->redirectToRoute('admin_user_index');
         }
         return $this->render('user/form.html.twig', [
             'controller_name' => 'UserController',
@@ -70,5 +70,50 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[Route('/admin/user/edit/{id}', name: 'admin_user_edit', methods : ['GET', 'POST'])]
+    public function editUsers( Request $request, 
+    EntityManagerInterface $entityManager , UserRepository $userRepo, int $id, DietRepository $dietRepo, 
+    AllergensRepository $allergensRepo): Response
+    {
+        $user = $userRepo->findOneBy(['id' => $id]);
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) { 
+            $password = $user->getPassword();
+            $hashedPassword = $this->userPasswordHasher->hashPassword($user, $password);
+            $user->setPassword($hashedPassword);
+
+            $roles = $user->getRoles();
+            // Enregistre les rôles dans l'entité User
+            $user->setRoles($roles);
+
+            $user = $form->getData();
+            $entityManager->persist($user);
+            $entityManager->flush(); // Mise à jour vers la base de données
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+        
+        return $this->render('user/form.html.twig', [
+            'controller_name' => 'UserController',
+            'form' => $form->createView(),
+            'user' => $userRepo->findAll(),
+            'diet' => $dietRepo->findAll(),
+            'allergens' => $allergensRepo->findAll(),
+
+        ]);
+    }
+
+    #[Route('/admin/user/delete/{id}', name: 'admin_user_delete', methods : 'GET')]
+    public function deleteUsers(UserRepository $userRepo, int $id, EntityManagerInterface $entityManager): Response
+    {
+        $user = $userRepo->findOneBy(['id' => $id]);
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_user_index');
+    }
 }
 
